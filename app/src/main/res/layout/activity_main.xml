@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/fondoOscuro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:backgroundTint="#000000"
+        android:elevation="4dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgMapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="95dp"
+        android:elevation="4dp"
+        android:src="@drawable/icono1"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fondoOscuro" />
+
+    <TextView
+        android:id="@+id/txtLocalizando"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:elevation="4dp"
+        android:fontFamily="serif"
+        android:text="Estamos localizando el movil ..."
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgMapa" />
+
+    <TextView
+        android:id="@+id/txtEspera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/loading_icon"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:elevation="4dp"
+        android:fontFamily="serif"
+        android:text="Favor de esperar"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMovil" />
+
+    <TextView
+        android:id="@+id/txtMovil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="40dp"
+        android:elevation="4dp"
+        android:maxLines="2"
+        android:text="Este proceso tarda dependiendo el movil"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLocalizando" />
+
+    <ImageView
+        android:id="@+id/loading_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="20dp"
+        android:elevation="4dp"
+        android:src="@drawable/cargando"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEspera" />
+
+    <Button
+        android:id="@+id/btn_generar_ruta"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#3B5D83"
+        android:elevation="6dp"
+        android:text="Generar Ruta"
+        android:textColor="#F2F4F7"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbPrincipal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/teal_700"
+        android:clickable="true"
+        android:focusable="true"
+        app:srcCompat="@drawable/mas"
+        app:tint="@android:color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/map_view"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbLocalizacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/deepOrange_800"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/fbPrincipal"
+        app:layout_constraintEnd_toEndOf="@+id/fbPrincipal"
+        app:layout_constraintStart_toStartOf="@+id/fbPrincipal"
+        app:srcCompat="@drawable/localizacion"
+        app:tint="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtLoca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:elevation="2dp"
+        android:text="Localización"
+        android:textColor="@color/deepOrange_800"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fbLocalizacion"
+        app:layout_constraintEnd_toStartOf="@+id/fbLocalizacion"
+        app:layout_constraintTop_toTopOf="@+id/fbLocalizacion" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbMapas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/deepOrange_800"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/mapa"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/fbLocalizacion"
+        app:layout_constraintEnd_toEndOf="@+id/fbPrincipal"
+        app:layout_constraintStart_toStartOf="@+id/fbPrincipal"
+        app:tint="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtMapas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:elevation="2dp"
+        android:text="Blanco / Negro"
+        android:textColor="@color/deepOrange_800"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fbMapas"
+        app:layout_constraintEnd_toStartOf="@+id/fbMapas"
+        app:layout_constraintTop_toTopOf="@+id/fbMapas" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbCamionConfig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/deepOrange_800"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/camion"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/fbMapas"
+        app:layout_constraintEnd_toEndOf="@+id/fbPrincipal"
+        app:layout_constraintStart_toStartOf="@+id/fbPrincipal"
+        app:tint="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtConfig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:elevation="2dp"
+        android:text="Configuración"
+        android:textColor="@color/deepOrange_800"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fbCamionConfig"
+        app:layout_constraintEnd_toStartOf="@+id/fbCamionConfig"
+        app:layout_constraintTop_toTopOf="@+id/fbCamionConfig" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbReiniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/deepOrange_800"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/reiniciar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/fbCamionConfig"
+        app:layout_constraintEnd_toEndOf="@+id/fbPrincipal"
+        app:layout_constraintStart_toStartOf="@+id/fbPrincipal"
+        app:tint="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtRestablecer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:elevation="2dp"
+        android:text="Restablecer valores"
+        android:textColor="@color/deepOrange_800"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fbReiniciar"
+        app:layout_constraintEnd_toStartOf="@+id/fbReiniciar"
+        app:layout_constraintTop_toTopOf="@+id/fbReiniciar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbRuta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/deepOrange_800"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ruta"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/fbReiniciar"
+        app:layout_constraintEnd_toEndOf="@+id/fbPrincipal"
+        app:layout_constraintStart_toStartOf="@+id/fbPrincipal"
+        app:tint="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtRuta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:elevation="2dp"
+        android:text="Crear Ruta"
+        android:textColor="@color/deepOrange_800"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fbRuta"
+        app:layout_constraintEnd_toStartOf="@+id/fbRuta"
+        app:layout_constraintTop_toTopOf="@+id/fbRuta" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etInicio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="90dp"
+        android:background="@drawable/rounded_dialog_background"
+        android:backgroundTint="#00000000"
+        android:elevation="6dp"
+        android:hint="Elige tu ubicación de partida"
+        android:textColorHint="#C0C0C0"
+        android:visibility="gone"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_generar_ruta">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/coordendas_iniciales_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_dialog_background"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etDestino"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="90dp"
+        android:background="@drawable/rounded_dialog_background"
+        android:backgroundTint="#00000000"
+        android:elevation="6dp"
+        android:hint="Elige tu destino final"
+        android:textColorHint="#C0C0C0"
+        android:visibility="gone"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etInicio">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/coordendas_finales_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_dialog_background"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/btnUbicar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="19dp"
+        android:background="#00000000"
+        android:elevation="6dp"
+        android:src="@drawable/ubicar"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/etInicio"
+        app:layout_constraintTop_toBottomOf="@+id/btn_generar_ruta" />
+
+    <ImageButton
+        android:id="@+id/btnRuta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:background="#00000000"
+        android:elevation="6dp"
+        android:onClick="addRouteButtonClicked"
+        android:src="@drawable/buscar"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/etInicio"
+        app:layout_constraintTop_toBottomOf="@+id/btnUbicar" />
+
+    <ImageButton
+        android:id="@+id/btnRevertir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:background="#00000000"
+        android:elevation="6dp"
+        android:rotation="90"
+        android:src="@drawable/revertir"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/etDestino"
+        app:layout_constraintTop_toBottomOf="@+id/btnRuta" />
+
+    <ImageButton
+        android:id="@+id/btnAgregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#00000000"
+        android:elevation="6dp"
+        android:src="@drawable/mas"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etWaypoint3" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etWaypoint1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="90dp"
+        android:background="@drawable/rounded_dialog_background"
+        android:backgroundTint="#00000000"
+        android:elevation="6dp"
+        android:hint="Agregar destino intermedio 1"
+        android:textColorHint="#C0C0C0"
+        android:visibility="gone"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDestino">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/titWaypoint1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_dialog_background"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/btnCerrarWaypoint1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/viewDetalles"
+        android:layout_alignTop="@+id/viewDetalles"
+        android:layout_marginStart="20dp"
+        android:background="#00000000"
+        android:backgroundTint="#00000000"
+        android:elevation="6dp"
+        android:rotation="45"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/etWaypoint1"
+        app:layout_constraintStart_toEndOf="@+id/etWaypoint1"
+        app:layout_constraintTop_toTopOf="@+id/etWaypoint1"
+        app:srcCompat="@drawable/mas" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etWaypoint2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="90dp"
+        android:background="@drawable/rounded_dialog_background"
+        android:backgroundTint="#00000000"
+        android:elevation="6dp"
+        android:hint="Agregar destino intermedio 2"
+        android:textColorHint="#C0C0C0"
+        android:visibility="gone"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etWaypoint1">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/titWaypoint2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_dialog_background"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/btnCerrarWaypoint2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/viewDetalles"
+        android:layout_alignTop="@+id/viewDetalles"
+        android:layout_marginStart="20dp"
+        android:background="#00000000"
+        android:backgroundTint="#00000000"
+        android:elevation="6dp"
+        android:rotation="45"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/etWaypoint2"
+        app:layout_constraintStart_toEndOf="@+id/etWaypoint2"
+        app:layout_constraintTop_toTopOf="@+id/etWaypoint2"
+        app:srcCompat="@drawable/mas" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etWaypoint3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="90dp"
+        android:background="@drawable/rounded_dialog_background"
+        android:backgroundTint="#00000000"
+        android:elevation="6dp"
+        android:hint="Agregar destino intermedio 3"
+        android:textColorHint="#C0C0C0"
+        android:visibility="gone"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etWaypoint2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/titWaypoint3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_dialog_background"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/btnCerrarWaypoint3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/viewDetalles"
+        android:layout_alignTop="@+id/viewDetalles"
+        android:layout_marginStart="20dp"
+        android:background="#00000000"
+        android:backgroundTint="#00000000"
+        android:elevation="6dp"
+        android:rotation="45"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/etWaypoint3"
+        app:layout_constraintStart_toEndOf="@+id/etWaypoint3"
+        app:layout_constraintTop_toTopOf="@+id/etWaypoint3"
+        app:srcCompat="@drawable/mas" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbLimpiar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/deepOrange_800"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/limpiar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/fbRuta"
+        app:layout_constraintEnd_toEndOf="@+id/fbPrincipal"
+        app:layout_constraintStart_toStartOf="@+id/fbPrincipal"
+        app:tint="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtEliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:elevation="2dp"
+        android:text="Eliminar Ruta"
+        android:textColor="@color/deepOrange_800"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fbLimpiar"
+        app:layout_constraintEnd_toStartOf="@+id/fbLimpiar"
+        app:layout_constraintTop_toTopOf="@+id/fbLimpiar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbSalir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/deepOrange_800"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/salir"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/fbLimpiar"
+        app:layout_constraintEnd_toEndOf="@+id/fbPrincipal"
+        app:layout_constraintStart_toStartOf="@+id/fbPrincipal"
+        app:tint="@android:color/white" />
+
+    <TextView
+        android:id="@+id/txtSalir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:elevation="2dp"
+        android:text="Salir"
+        android:textColor="@color/deepOrange_800"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fbSalir"
+        app:layout_constraintEnd_toStartOf="@+id/fbSalir"
+        app:layout_constraintTop_toTopOf="@+id/fbSalir" />
+
+    <com.here.sdk.mapview.MapView
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_generar_ruta"
+        app:layout_constraintVertical_bias="1.0" >
+    </com.here.sdk.mapview.MapView>
+
+    <View
+        android:id="@+id/viewDetalles"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:background="@drawable/rounded_dialog_background"
+        android:backgroundTint="#DBE2EF"
+        android:elevation="6dp"
+        android:padding="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtCamion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:elevation="6dp"
+        android:fontFamily="serif"
+        android:text="Configuración"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/viewDetalles"
+        app:layout_constraintStart_toStartOf="@+id/viewDetalles"
+        app:layout_constraintTop_toTopOf="@+id/viewDetalles" />
+
+    <TextView
+        android:id="@+id/txtIndicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtCamion"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:elevation="6dp"
+        android:fontFamily="serif"
+        android:text="Todos los valores ingresados deben ser números enteros."
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/viewDetalles"
+        app:layout_constraintStart_toStartOf="@+id/viewDetalles"
+        app:layout_constraintTop_toBottomOf="@+id/txtCamion" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etSpinner"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgTonelada"
+        android:layout_alignStart="@+id/viewDetalles"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#D3D3D3"
+        android:elevation="6dp"
+        android:textColorHint="@color/black"
+        android:visibility="gone"
+        android:textAlignment="center"
+        android:gravity="center"
+        app:boxBackgroundColor="@color/white"
+        app:helperTextTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/viewDetalles"
+        app:layout_constraintStart_toStartOf="@+id/viewDetalles"
+        app:layout_constraintTop_toBottomOf="@+id/txtIndicacion">
+
+        <AutoCompleteTextView
+            android:id="@+id/AutOpciones"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="none"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="Seleccione una opción"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/imgTonelada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtIndicacion"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="95dp"
+        android:elevation="6dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/viewDetalles"
+        app:layout_constraintTop_toBottomOf="@+id/txtIndicacion"
+        app:srcCompat="@drawable/tonelada" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etPeso"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgTonelada"
+        android:layout_alignStart="@+id/viewDetalles"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#D3D3D3"
+        android:elevation="6dp"
+        android:textColorHint="@color/black"
+        android:visibility="gone"
+        app:boxBackgroundColor="@color/white"
+        app:endIconMode="clear_text"
+        app:helperText="En toneladas"
+        app:helperTextTextColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/viewDetalles"
+        app:layout_constraintTop_toBottomOf="@+id/imgTonelada">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtToneladas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="6dp"
+            android:hint="Toneladas"
+            android:inputType="number"
+            android:textColor="#000080" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/imgAltura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtIndicacion"
+        android:layout_alignEnd="@+id/viewDetalles"
+        android:layout_marginTop="95dp"
+        android:layout_marginEnd="57dp"
+        android:elevation="6dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/viewDetalles"
+        app:layout_constraintTop_toBottomOf="@+id/txtIndicacion"
+        app:srcCompat="@drawable/altura" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etAltura"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgAltura"
+        android:layout_alignEnd="@+id/viewDetalles"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="#D3D3D3"
+        android:elevation="6dp"
+        android:textColorHint="@color/black"
+        android:visibility="gone"
+        app:boxBackgroundColor="@color/white"
+        app:endIconMode="clear_text"
+        app:helperText="En metros"
+        app:helperTextTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/viewDetalles"
+        app:layout_constraintTop_toBottomOf="@+id/imgAltura">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtAltura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="6dp"
+            android:hint="Altura"
+            android:inputType="number"
+            android:textColor="#000080" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/imgAncho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etPeso"
+        android:layout_alignStart="@+id/viewDetalles"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="40dp"
+        android:elevation="6dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/viewDetalles"
+        app:layout_constraintTop_toBottomOf="@+id/etPeso"
+        app:srcCompat="@drawable/anchocamion" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etAncho"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgAncho"
+        android:layout_alignStart="@+id/viewDetalles"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#D3D3D3"
+        android:elevation="6dp"
+        android:textColorHint="@color/black"
+        android:visibility="gone"
+        app:boxBackgroundColor="@color/white"
+        app:endIconMode="clear_text"
+        app:helperText="En metros"
+        app:helperTextTextColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/viewDetalles"
+        app:layout_constraintTop_toBottomOf="@+id/imgAncho">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtAncho"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="6dp"
+            android:hint="Ancho"
+            android:inputType="number"
+            android:textColor="#000080" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/imgLargo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etAltura"
+        android:layout_alignEnd="@+id/viewDetalles"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="57dp"
+        android:elevation="6dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/viewDetalles"
+        app:layout_constraintTop_toBottomOf="@+id/etAltura"
+        app:srcCompat="@drawable/largo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etLongitud"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgLargo"
+        android:layout_alignEnd="@+id/viewDetalles"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:backgroundTint="#D3D3D3"
+        android:elevation="6dp"
+        android:textColorHint="@color/black"
+        android:visibility="gone"
+        app:boxBackgroundColor="@color/white"
+        app:endIconMode="clear_text"
+        app:helperText="En metros"
+        app:helperTextTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/viewDetalles"
+        app:layout_constraintTop_toBottomOf="@+id/imgLargo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtLargo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="6dp"
+            android:hint="Largo"
+            android:inputType="number"
+            android:textColor="#000080" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnEnviar"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtIndicacion"
+        android:layout_alignStart="@+id/viewDetalles"
+        android:layout_alignEnd="@+id/viewDetalles"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:elevation="6dp"
+        android:text="Aceptar"
+        android:textColor="#F2F4F7"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/etLongitud"
+        app:layout_constraintStart_toStartOf="@+id/viewDetalles"
+        app:layout_constraintTop_toBottomOf="@+id/etAncho" />
+
+    <Button
+        android:id="@+id/btnGuardar"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtIndicacion"
+        android:layout_alignStart="@+id/viewDetalles"
+        android:layout_alignEnd="@+id/viewDetalles"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="30dp"
+        android:elevation="6dp"
+        android:text="Guardar"
+        android:textColor="#F2F4F7"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/viewDetalles"
+        app:layout_constraintStart_toEndOf="@+id/etAncho"
+        app:layout_constraintTop_toBottomOf="@+id/etLongitud" />
+
+    <ImageButton
+        android:id="@+id/btnCerrar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/viewDetalles"
+        android:layout_alignTop="@+id/viewDetalles"
+        android:backgroundTint="#00000000"
+        android:elevation="6dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/viewDetalles"
+        app:layout_constraintTop_toTopOf="@+id/viewDetalles"
+        app:srcCompat="@drawable/cerrar" />
+</androidx.constraintlayout.widget.ConstraintLayout>
